@@ -16,6 +16,8 @@ def load_dataset(path):
 mpath = '/mnt/linuxdata2/Dropbox/_machine_learning/udacity_projects/cnn-project/'
 
 
+#------------------------------- Load  dog images dataset ---------------------------------------------
+
 # load train, test, and validation datasets
 train_files, train_targets = load_dataset(mpath+'dogImages/train')
 valid_files, valid_targets = load_dataset(mpath+'dogImages/valid')
@@ -31,3 +33,46 @@ print('There are %d training dog images.' % len(train_files))
 print('There are %d validation dog images.' % len(valid_files))
 print('There are %d test dog images.'% len(test_files))
 
+#------------------------------ Load human faces dataset -------------------------------------------------
+
+import random
+random.seed(8675309)
+
+# load filenames in shuffled human dataset
+human_files = np.array(glob(mpath+"lfw/*/*"))
+random.shuffle(human_files)
+
+# print statistics about the dataset
+print('There are %d total human images.' % len(human_files))
+
+# ------------------------------ Detect human faces in images ---------------------------------------------
+
+import cv2
+import matplotlib.pyplot as plt
+#%matplotlib inline
+
+# extract pre-trained face detector
+face_cascade = cv2.CascadeClassifier(mpath+'haarcascades/haarcascade_frontalface_alt.xml')
+
+# load color (BGR) image
+img = cv2.imread(human_files[3])
+# convert BGR image to grayscale
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# find faces in image
+faces = face_cascade.detectMultiScale(gray)
+
+# print number of faces detected in the image
+print('Number of faces detected:', len(faces))
+
+# get bounding box for each detected face
+for (x,y,w,h) in faces:
+    # add bounding box to color image
+    cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+
+# convert BGR image to RGB for plotting
+cv_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+# display the image, along with bounding box
+plt.imshow(cv_rgb)
+plt.show()
