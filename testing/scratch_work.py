@@ -47,35 +47,37 @@ print('There are %d total human images.' % len(human_files))
 
 # ------------------------------ Detect human faces in images ---------------------------------------------
 
-import cv2
-import matplotlib.pyplot as plt
-#%matplotlib inline
+if False:
 
-# extract pre-trained face detector
-face_cascade = cv2.CascadeClassifier(mpath+'haarcascades/haarcascade_frontalface_alt.xml')
+    import cv2
+    import matplotlib.pyplot as plt
+    #%matplotlib inline
 
-# load color (BGR) image
-img = cv2.imread(human_files[3])
-# convert BGR image to grayscale
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    # extract pre-trained face detector
+    face_cascade = cv2.CascadeClassifier(mpath+'haarcascades/haarcascade_frontalface_alt.xml')
 
-# find faces in image
-faces = face_cascade.detectMultiScale(gray)
+    # load color (BGR) image
+    img = cv2.imread(human_files[3])
+    # convert BGR image to grayscale
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-# print number of faces detected in the image
-print('Number of faces detected:', len(faces))
+    # find faces in image
+    faces = face_cascade.detectMultiScale(gray)
 
-# get bounding box for each detected face
-for (x,y,w,h) in faces:
-    # add bounding box to color image
-    cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+    # print number of faces detected in the image
+    print('Number of faces detected:', len(faces))
 
-# convert BGR image to RGB for plotting
-cv_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    # get bounding box for each detected face
+    for (x,y,w,h) in faces:
+        # add bounding box to color image
+        cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
 
-# display the image, along with bounding box
-plt.imshow(cv_rgb)
-plt.show()
+    # convert BGR image to RGB for plotting
+    cv_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+    # display the image, along with bounding box
+    plt.imshow(cv_rgb)
+    plt.show()
 
 #
 # returns "True" if face is detected in image stored at img_path
@@ -85,3 +87,40 @@ def face_detector(img_path):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray)
     return len(faces) > 0
+
+#---------------------------------------- QUESTION 1 ------------------------------------------------------
+"""
+Ttest the performance of the face_detector function.
+
+    What percentage of the first 100 images in human_files have a detected human face?
+    What percentage of the first 100 images in dog_files have a detected human face?
+
+Ideally, we would like 100% of human images with a detected face and 0% of dog images with a detected face. 
+You will see that our algorithm falls short of this goal, but still gives acceptable performance. 
+We extract the file paths for the first 100 images from each of the datasets and store them in the numpy arrays 
+human_files_short and dog_files_short.
+"""
+
+import cv2
+
+human_files_short = human_files[:100]
+dog_files_short = train_files[:100]
+face_cascade = cv2.CascadeClassifier(mpath+'haarcascades/haarcascade_frontalface_alt.xml')
+
+s1, s2 = 0, 0
+for human_ipath in human_files_short:
+    s1 += face_detector(human_ipath)
+for dog_ipath in dog_files_short:
+    s2 += face_detector(dog_ipath)
+
+print("Percentage of human faces detected in short human_files dataset: {}".format(s1))
+print("Percentage of human faces detected in short dog_files dataset: {}".format(s2))
+
+
+
+
+
+
+
+
+
