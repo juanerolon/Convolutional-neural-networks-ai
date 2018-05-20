@@ -6,7 +6,7 @@
 
 # Convolutional Neural Networks for Dog Breed Identification
 
-### Juan E. Rolon, 2018.
+### Juan E. Rolon, 2018
 
 <img src="sample_output.png"
      alt="sample_output"
@@ -72,11 +72,11 @@ Along with exploring state-of-the-art convolutional neural networks classificati
     
 #### Infrastructure required
 
-Your model can be trained on a local CPU-GPU, or if needed on an Amazon Web Services EC2 GPU instance.  Please refer to the following instructions for setting up a GPU instance for this project.  ([link for AIND students](https://classroom.udacity.com/nanodegrees/nd889/parts/16cf5df5-73f0-4afa-93a9-de5974257236/modules/53b2a19e-4e29-4ae7-aaf2-33d195dbdeba/lessons/2df3b94c-4f09-476a-8397-e8841b147f84/project), [link for MLND students](https://classroom.udacity.com/nanodegrees/nd009/parts/99115afc-e849-48cf-a580-cb22eea2ba1b/modules/777db663-2b0d-4040-9ae4-bf8c6ab8f157/lessons/a088c519-05af-4589-a1e2-2c484b1268ef/project))
+The model can be trained on a local CPU-GPU, or if needed on an Amazon Web Services EC2 GPU instance.  Please refer to the following instructions for setting up a GPU instance for this project.  ([link for AIND students](https://classroom.udacity.com/nanodegrees/nd889/parts/16cf5df5-73f0-4afa-93a9-de5974257236/modules/53b2a19e-4e29-4ae7-aaf2-33d195dbdeba/lessons/2df3b94c-4f09-476a-8397-e8841b147f84/project), [link for MLND students](https://classroom.udacity.com/nanodegrees/nd009/parts/99115afc-e849-48cf-a580-cb22eea2ba1b/modules/777db663-2b0d-4040-9ae4-bf8c6ab8f157/lessons/a088c519-05af-4589-a1e2-2c484b1268ef/project))
 
 ## Usage
 
-You need an IDE capable of editing and running Ipython notebooks. If Jupyter is installed in your distribution:   
+To implement the following project we use an IDE capable of editing and running Ipython notebooks. If Jupyter is installed in the python distribution type:   
 
 `$ jupyter notebook cnn-image-classifier.ipynb`
 
@@ -124,20 +124,20 @@ You need an IDE capable of editing and running Ipython notebooks. If Jupyter is 
 |:---------------------:|:---------------------------------------------------------:| 
 | Test Algorithm   | Use the CNN from Step 5 to detect dog breed.  Assess whether output for each detected image type (dog, human, other) is different from previous cases. Obtain either predicted actual (or resembling) dog breed. |
 
-#### Step 7: Test your Algorithm
+#### Step 7: Test Improved Algorithm
 | Criteria       		|     Procedure	        			            | 
 |:---------------------:|:---------------------------------------------------------:| 
 | Test Algorithm on Sample Images   | Test at least 6 images, including at least two human and two dog images. |
 | Test Algorithm on Sample Images | Assess performance of the algorithm and at least three possible points of improvement. |
 
-## Further Tests and Improvements
+## Suggested Additional Tests and Improvements
 
 
 #### (1) Augment the Training Data 
 
 [Augmenting the training and/or validation set](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html) might help improve model performance. 
 
-#### (2) Turn your Algorithm into a Web App
+#### (2) Turning the Algorithm into a Web App
 
 Turn code into a web app using [Flask](http://flask.pocoo.org/) or [web.py](http://webpy.org/docs/0.3/tutorial)!  
 
@@ -147,7 +147,7 @@ Overlay a Snapchat-like filter with dog ears on detected human heads.  Determine
 
 #### (4) Add Functionality for Dog Mutts
 
-Currently, if a dog appears 51% German Shepherd and 49% poodle, only the German Shephard breed is returned.  The algorithm may fail for every mixed breed dog.  Of course, if a dog is predicted as 99.5% Labrador, it is still worthwhile to round this to 100% and return a single breed; so, you will have to find a nice balance.  
+Currently, if a dog appears 51% German Shepherd and 49% poodle, only the German Shephard breed is returned.  The algorithm may fail for every mixed breed dog.  Of course, if a dog is predicted as 99.5% Labrador, it is still worthwhile to round this to 100% and return a single breed; so, it will be neccessary to find a nice balance.  
 
 #### (5) Experiment with Multiple Dog/Human Detectors
 
