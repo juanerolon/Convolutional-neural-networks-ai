@@ -6,7 +6,9 @@
 
 # Convolutional Neural Networks for Dog Breed Identification
 
-### Juan E. Rolon, 2018
+#
+### Juan E. Rolon
+#
 
 <img src="sample_output.png"
      alt="sample_output"
